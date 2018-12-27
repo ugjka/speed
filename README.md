@@ -49,3 +49,10 @@ Usage of speedc:
 ```
 
 you can set $SPEEDCSRV variable in your profile containing your server adress
+
+```
+[ugjka@archee speedd]$ speedd -help
+Usage of speedd:
+  -p uint
+        listener port (default 44444)
+```

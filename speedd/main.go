@@ -3,6 +3,8 @@ package main
 
 import (
 	"encoding/binary"
+	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -10,10 +12,19 @@ import (
 )
 
 func main() {
-	l, err := net.Listen("tcp4", ":44444")
+	log.SetPrefix("speedd ")
+	p := flag.Uint("p", 44444, "listener port")
+	flag.Parse()
+
+	if *p == 0 || *p > 65535 {
+		fmt.Fprintf(os.Stderr, "Error: invalid port number: %d", *p)
+		return
+	}
+	l, err := net.Listen("tcp4", fmt.Sprintf(":%d", *p))
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("listening on :%d", *p)
 	for {
 		conn, err := l.Accept()
 		if err != nil {
@@ -28,7 +39,6 @@ func client(conn net.Conn) {
 	defer conn.Close()
 	var upcommand int64 = 10
 	var downcommand int64 = 20
-	log.SetPrefix("speedd ")
 	log.Printf("client connected: %s\n", conn.RemoteAddr())
 	defer log.Printf("client disconnected: %s\n", conn.RemoteAddr())
 	var cmd int64
