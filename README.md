@@ -48,7 +48,7 @@ Usage of speedc:
   -u    upload test
 ```
 
-you can set $SPEEDCSRV variable in your profile containing your server adress
+you can set `$SPEEDCSRV` variable in your profile containing your server adress
 
 ```
 [ugjka@archee speedd]$ speedd -help
