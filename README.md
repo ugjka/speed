@@ -37,4 +37,15 @@ Dec 27 14:08:30 ugjka speedd[20861]: speedd 2018/12/27 14:08:30 client disconnec
 
 ### usage
 
+```
+[ugjka@archee speedc]$ speedc -help
+Usage of speedc:
+  -d    download test (default true)
+  -p uint
+        piece size in KB
+  -s string
+        server adress (default ":44444")
+  -u    upload test
+```
+
 you can set $SPEEDCSRV variable in your profile containing your server adress
