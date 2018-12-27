@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	if *p == 0 || *p > 65535 {
-		fmt.Fprintf(os.Stderr, "Error: invalid port number: %d", *p)
+		fmt.Fprintf(os.Stderr, "Error: invalid port number: %d\n", *p)
 		return
 	}
 	l, err := net.Listen("tcp4", fmt.Sprintf(":%d", *p))
@@ -39,24 +39,24 @@ func client(conn net.Conn) {
 	defer conn.Close()
 	var upcommand int64 = 10
 	var downcommand int64 = 20
-	log.Printf("client connected: %s\n", conn.RemoteAddr())
-	defer log.Printf("client disconnected: %s\n", conn.RemoteAddr())
+	log.Printf("client connected: %s", conn.RemoteAddr())
+	defer log.Printf("client disconnected: %s", conn.RemoteAddr())
 	var cmd int64
 	err := binary.Read(conn, binary.LittleEndian, &cmd)
 	if err != nil {
 		return
 	}
 	if cmd == upcommand {
-		log.Printf("client sent the up command: %s\n", conn.RemoteAddr())
+		log.Printf("client sent the up command: %s", conn.RemoteAddr())
 		read(conn)
 		return
 	}
 	if cmd == downcommand {
-		log.Printf("client sent the down command: %s\n", conn.RemoteAddr())
+		log.Printf("client sent the down command: %s", conn.RemoteAddr())
 		write(conn)
 		return
 	}
-	log.Printf("client sent an invalid command: %s\n", conn.RemoteAddr())
+	log.Printf("client sent an invalid command: %s", conn.RemoteAddr())
 }
 
 func read(conn net.Conn) {
