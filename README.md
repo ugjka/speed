@@ -34,3 +34,7 @@ Dec 27 14:08:22 ugjka speedd[20861]: speedd 2018/12/27 14:08:22 client connected
 Dec 27 14:08:22 ugjka speedd[20861]: speedd 2018/12/27 14:08:22 client sent the down command: 90.139.36.111:47198
 Dec 27 14:08:30 ugjka speedd[20861]: speedd 2018/12/27 14:08:30 client disconnected: 90.139.36.111:47198
 ```
+
+### usage
+
+you can set $SPEEDCSRV variable in your profile containing your server adress
