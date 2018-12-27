@@ -35,7 +35,7 @@ Dec 27 14:08:22 ugjka speedd[20861]: speedd 2018/12/27 14:08:22 client sent the 
 Dec 27 14:08:30 ugjka speedd[20861]: speedd 2018/12/27 14:08:30 client disconnected: 90.139.36.111:47198
 ```
 
-### usage
+## usage
 
 ```
 [ugjka@archee speedc]$ speedc -help
