@@ -18,7 +18,8 @@ import (
 func main() {
 	u := flag.Bool("u", false, "upload test")
 	d := flag.Bool("d", true, "download test")
-	s := flag.String("s", ":44444", "server adress")
+	defsrv := ":44444"
+	s := flag.String("s", defsrv, "server adress")
 	p := flag.Uint64("p", 0, "piece size in KB")
 	flag.Parse()
 
@@ -31,7 +32,7 @@ func main() {
 		return
 	}
 
-	if srv := os.Getenv("SPEEDCSRV"); srv != "" {
+	if srv := os.Getenv("SPEEDCSRV"); srv != "" && *s == defsrv {
 		*s = srv
 	}
 
