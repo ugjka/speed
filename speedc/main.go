@@ -116,7 +116,7 @@ func write(wg *sync.WaitGroup, conn net.Conn, size int) {
 		}
 		if time.Since(now) > time.Second {
 			i++
-			curr := float64(t) * 8 / 1024 / 1024 / float64(time.Since(now).Nanoseconds()) * 1000000000
+			curr := float64(t) * 8 / 1024 / 1024 / time.Since(now).Seconds()
 			total += curr
 			fmt.Print("\r")
 			err := tput("el")
@@ -146,7 +146,7 @@ func read(wg *sync.WaitGroup, conn net.Conn, size int) {
 		}
 		if time.Since(now) > time.Second {
 			i++
-			curr := float64(t) * 8 / 1024 / 1024 / float64(time.Since(now).Nanoseconds()) * 1000000000
+			curr := float64(t) * 8 / 1024 / 1024 / time.Since(now).Seconds()
 			total += curr
 			fmt.Print("\r")
 			err := tput("el")
